@@ -4,7 +4,7 @@
     <input type="text" v-model="ime" placeholder="Unesite ime pasmine ili samo dio">
     <ul class="dogs">
       <li v-for="(pasmina, index) in filtrirano" :key="index">
-        <router-link :to="`/pasmine/${index}`">{{ pasmina }}</router-link>
+        <router-link :to="`/pasmine/${pasmina}`">{{ pasmina }}</router-link>
       </li>
     </ul>
     <h2>Što nam je API vratio (filtrirano od tražilice)</h2>
