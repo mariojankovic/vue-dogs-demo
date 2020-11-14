@@ -2,9 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
 
-import Pocetna from "./components/Pocetna.vue";
-import Pasmine from "./components/Pasmine.vue";
-import Pasmina from "./components/Pasmina.vue";
+import Pocetna from "./views/Pocetna.vue";
+import Pasmine from "./views/Pasmine.vue";
+import Pasmina from "./views/Pasmina.vue";
 
 Vue.use(VueRouter);
 
@@ -31,5 +31,5 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  render: h => h(App)
+  render: (h) => h(App)
 }).$mount("#app");

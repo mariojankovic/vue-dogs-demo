@@ -2,7 +2,11 @@
   <div>
     <h2>Sve pasmine</h2>
     <!-- Koristimo v-model koji nudi nešto što nazivamo two-way binding, odnosno vežemo varijablu u javascriptu koja se naziva ime s ovim input elementom, što znači da ovaj input može mijenjati vrijednost te varijable ali će isto tako i stalno motriti vrijednost te varijable ako bi se ona promijenila negdje drugdje -->
-    <input type="text" v-model="ime" placeholder="Unesite ime pasmine ili samo dio">
+    <input
+      type="text"
+      v-model="ime"
+      placeholder="Unesite ime pasmine ili samo dio"
+    />
     <ul class="dogs">
       <!-- Klasična petlja u Vue-u koja prolazi kroz sve što array pod nazivom filtrirano vraća. Skrolajte na dno popisa pa ćete vidit kako izgleda sam array filtrirano odnosno ono što vraća. -->
       <li v-for="(pasmina, index) in filtrirano" :key="index">
@@ -22,7 +26,7 @@ export default {
     return {
       // Defaultovi za sve pasmine i search. Pasmine su prazan array kojeg će kasnije response zamijenit s pravom stvari
       pasmine: [],
-      ime: ""
+      ime: "",
     };
   },
   async mounted() {
@@ -57,12 +61,15 @@ export default {
      * Sve što smo dobili od API i spremili gore u varijablu imena pasmine sada filtriramo. Točnije, ako pogledate što nam je API vratio (malo je neobičan) vidit ćete da imamo objekt u kojem je hrpa arrayeva (primjerice affenpinscher: []) gdje je key sam naziv jednog keya u tom objektu (ovako: { objKey: 'keyValue' }) zapravo naziv pasmine. Pa smo morali u objektu sve te keyeve pokupit i njih potom filtrirati na način da pitamo da li uključuje (includes) nešto što nam this.ime vraća odnosno nešto što search nalazi.
      */
     filtrirano() {
+      let filtered = [];
       if (this.pasmine.message)
-        return Object.keys(this.pasmine.message).filter(item =>
+        filtered = Object.keys(this.pasmine.message).filter((item) =>
           item.includes(this.ime)
         );
-    }
-  }
+
+      return filtered;
+    },
+  },
 };
 </script>
 
